@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Digital Social Media Content Calendar for Realtors</title>
+    <title>Checkout</title>
     <link rel="stylesheet" href="styles.css?v=11" />
   </head>
   <body class="home">
@@ -44,12 +44,23 @@
     </header>
 
     <main class="section container">
-      <h1>Digital Social Media Content Calendar for Realtors - $79.50</h1>
-      <p><strong>Preview</strong></p>
+      <h1>Checkout</h1>
+
       <section class="coaching-card">
-        <p>Includes guided monthly planning prompts and posting structure designed for Realtor content workflows.</p>
-        <button class="add-cart-btn" type="button" data-add-to-cart data-product-name="Digital Social Media Content Calendar" data-product-price="79.50">Add to Cart</button>
-        <a class="resource-link" href="agent-resources.html">Back to Agent Resources</a>
+        <h2>Order Summary</h2>
+        <ul class="checkout-list" data-checkout-list></ul>
+        <p class="checkout-total">Total: $<span data-checkout-total>0.00</span></p>
+      </section>
+
+      <section class="coaching-card">
+        <h2>Payment Methods</h2>
+        <p>Please send your payment using one of the preferred methods below:</p>
+        <ul class="coaching-list">
+          <li>Zelle</li>
+          <li>Apple Pay</li>
+          <li>Cash App</li>
+        </ul>
+        <p>After payment, email your confirmation to Miya.Wilson@outlook.com with your selected items.</p>
       </section>
     </main>
 
@@ -63,6 +74,8 @@
           or legal matters should be reviewed with a licensed professional.</p>
       </div>
     </footer>
+
     <script src="cart.js?v=2" defer></script>
+    <script src="checkout.js?v=1" defer></script>
   </body>
 </html>

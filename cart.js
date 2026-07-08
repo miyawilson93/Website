@@ -37,6 +37,7 @@
       '<div class="cart-footer">',
       '  <div><strong>Total: $<span data-cart-total>0.00</span></strong></div>',
       '  <div style="margin-top:0.55rem; display:flex; gap:0.5rem;">',
+      '    <button class="cart-btn" type="button" data-cart-checkout>Checkout</button>',
       '    <button class="cart-btn" type="button" data-cart-clear>Clear Cart</button>',
       "  </div>",
       "</div>",
@@ -59,6 +60,10 @@
       if (target.hasAttribute("data-cart-clear")) {
         writeCart([]);
         refresh();
+      }
+
+      if (target.hasAttribute("data-cart-checkout")) {
+        window.location.href = "checkout.html";
       }
 
       if (target.hasAttribute("data-remove-index")) {
