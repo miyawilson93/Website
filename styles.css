@@ -531,16 +531,20 @@ h1 {
 }
 
 .discount-modal-card {
-  width: min(520px, 96vw);
-  background-image: linear-gradient(rgba(250, 243, 232, 0.84), rgba(250, 243, 232, 0.9)), url("Image (1).png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  width: min(760px, 97vw);
+  min-height: 560px;
+  background-image: linear-gradient(rgba(250, 243, 232, 0.88), rgba(250, 243, 232, 0.92)), url("Image (1).png");
+  background-position: center, center;
+  background-size: 100% 100%, contain;
+  background-repeat: no-repeat, no-repeat;
   color: #000000;
   border-radius: 18px;
   padding: 1.25rem 1.1rem 1.1rem;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
   border: 1px solid rgba(117, 43, 29, 0.45);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .discount-modal-title {
@@ -826,6 +830,7 @@ h1 {
   }
 
   .discount-modal-card {
+    min-height: 460px;
     padding: 1rem 0.9rem;
   }
 
