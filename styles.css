@@ -287,8 +287,8 @@ h1 {
 
 .hero-visual-popout {
   position: absolute;
-  width: clamp(320px, 30vw, 380px);
-  height: clamp(230px, 24vw, 290px);
+  width: clamp(280px, 27vw, 330px);
+  height: clamp(200px, 22vw, 250px);
   left: calc(62% - 160px);
   top: 48%;
   transform: translateY(-50%);
@@ -308,21 +308,6 @@ h1 {
 
 .hero-visual-popout {
   z-index: 3;
-}
-
-.home .hero-layout {
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0;
-  padding-top: 0.5rem;
-}
-
-.home .hero-visual {
-  min-height: clamp(580px, 82vh, 860px);
-}
-
-.home .hero-visual-card {
-  height: clamp(580px, 82vh, 860px);
-  min-height: 0;
 }
 
 .section {
