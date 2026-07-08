@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Agent Resources</title>
-    <link rel="stylesheet" href="styles.css?v=9" />
+    <link rel="stylesheet" href="styles.css?v=10" />
   </head>
   <body class="home">
     <header class="hero">
@@ -37,6 +37,9 @@
           <img src="Image (1).png" alt="Move Wise logo" class="logo" />
           <span class="brand-name">MoveWise</span>
         </a>
+        <div class="nav-actions">
+          <button class="cart-trigger" type="button" data-cart-open>Cart (<span data-cart-count>0</span>)</button>
+        </div>
       </div>
     </header>
 
@@ -56,24 +59,28 @@
         <section class="coaching-card">
           <h2>New Agent Starter Kit - $49.99</h2>
           <p>Preview includes your first 90-day structure, daily tracker, goal worksheet, and social templates.</p>
+          <button class="add-cart-btn" type="button" data-add-to-cart data-product-name="New Agent Starter Kit" data-product-price="49.99">Add to Cart</button>
           <a class="resource-link" href="new-agent-starter-kit.html">View Full Preview</a>
         </section>
 
         <section class="coaching-card">
           <h2>Digital Social Media Content Calendar - $79.50</h2>
           <p>Preview includes campaign planning and posting structure for Realtors.</p>
+          <button class="add-cart-btn" type="button" data-add-to-cart data-product-name="Digital Social Media Content Calendar" data-product-price="79.50">Add to Cart</button>
           <a class="resource-link" href="digital-social-media-calendar.html">View Full Preview</a>
         </section>
 
         <section class="coaching-card">
           <h2>Buyer Consultation Guide - $65.99</h2>
           <p>Preview includes the consultation framework, scripts, and process flow.</p>
+          <button class="add-cart-btn" type="button" data-add-to-cart data-product-name="Buyer Consultation Guide" data-product-price="65.99">Add to Cart</button>
           <a class="resource-link" href="buyer-consultation-guide.html">View Full Preview</a>
         </section>
 
         <section class="coaching-card">
           <h2>Seller Consultation Guide - $65.99</h2>
           <p>Preview includes listing consultation talking points and presentation structure.</p>
+          <button class="add-cart-btn" type="button" data-add-to-cart data-product-name="Seller Consultation Guide" data-product-price="65.99">Add to Cart</button>
           <a class="resource-link" href="seller-consultation-guide.html">View Full Preview</a>
         </section>
 
@@ -81,6 +88,7 @@
           <h2>Agent Merch (T-Shirts &amp; Hoodies)</h2>
           <p>T-shirts - $</p>
           <p>Hoodies - $</p>
+          <button class="add-cart-btn" type="button" data-add-to-cart data-product-name="Agent Merch" data-product-price="0">Add to Cart</button>
           <a class="resource-link" href="agent-merch.html">View Full Preview</a>
         </section>
       </div>
@@ -96,5 +104,6 @@
           or legal matters should be reviewed with a licensed professional.</p>
       </div>
     </footer>
+    <script src="cart.js?v=2" defer></script>
   </body>
 </html>

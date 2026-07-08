@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Agent Coaching</title>
-    <link rel="stylesheet" href="styles.css?v=9" />
+    <link rel="stylesheet" href="styles.css?v=10" />
   </head>
   <body class="home">
     <header class="hero">
@@ -37,6 +37,9 @@
           <img src="Image (1).png" alt="Move Wise logo" class="logo" />
           <span class="brand-name">MoveWise</span>
         </a>
+        <div class="nav-actions">
+          <button class="cart-trigger" type="button" data-cart-open>Cart (<span data-cart-count>0</span>)</button>
+        </div>
       </div>
     </header>
 
@@ -80,6 +83,7 @@
         <p class="coaching-price">Monthly fee - $199</p>
         <p class="coaching-price">6 month - $999.50 one-time fee for full 6-month term</p>
         <p class="coaching-price">12 month - $1,899.99 one-time fee for all 12 months</p>
+        <button class="add-cart-btn" type="button" data-add-to-cart data-product-name="1-on-1 Coaching" data-product-price="199">Add to Cart</button>
 
         <h3>Terms &amp; Conditions</h3>
         <p><strong>Coaching Expectations</strong></p>
@@ -125,6 +129,7 @@
         <h3>Pricing and Terms</h3>
         <p class="coaching-price">6 months for a one-time fee of $499.50 per member</p>
         <p class="coaching-price">Group max - 6 people</p>
+        <button class="add-cart-btn" type="button" data-add-to-cart data-product-name="Group Coaching" data-product-price="499.50">Add to Cart</button>
 
         <h3>Terms &amp; Conditions</h3>
         <p><strong>Coaching Expectations</strong></p>
@@ -174,6 +179,7 @@
         <h3>Pricing and Terms</h3>
         <p class="coaching-price">6 months - one-time fee of $1,599.50</p>
         <p class="coaching-price">12 months - one-time fee of $3,000.00</p>
+        <button class="add-cart-btn" type="button" data-add-to-cart data-product-name="VIP Intensive" data-product-price="1599.50">Add to Cart</button>
 
         <h3>Terms &amp; Conditions</h3>
         <p><strong>Coaching Expectations</strong></p>
@@ -199,5 +205,6 @@
           or legal matters should be reviewed with a licensed professional.</p>
       </div>
     </footer>
+    <script src="cart.js?v=2" defer></script>
   </body>
 </html>
