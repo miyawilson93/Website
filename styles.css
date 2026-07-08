@@ -22,6 +22,14 @@ body {
   line-height: 1.6;
 }
 
+.coaching-page {
+  background-image: linear-gradient(rgba(250, 243, 232, 0.78), rgba(250, 243, 232, 0.78)), url("Screenshot 2026-05-06 094739.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
 img {
   max-width: 100%;
 }
@@ -360,8 +368,8 @@ h1 {
 }
 
 .footer {
-  background: var(--bg);
-  color: #000000;
+  background: var(--topbar-bg);
+  color: #ffffff;
   padding: 1.25rem 0;
 }
 
