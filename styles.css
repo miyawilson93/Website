@@ -225,28 +225,35 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
-  background: var(--topbar-bg);
-  color: #ffffff;
-  padding: 0.45rem 0.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.14);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+  gap: 0.8rem;
+  width: min(92vw, 420px);
+  margin: 0.5in auto 0;
+  background: #ffffff;
+  color: #000000;
+  padding: 0.35rem 0.45rem;
+  border: 1px solid rgba(117, 43, 29, 0.28);
+  border-radius: 999px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
 }
 
 .mobile-home-brand {
   color: #ffffff;
   text-decoration: none;
   font-family: "Times New Roman", Georgia, serif;
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+  background: var(--topbar-bg);
+  border-radius: 999px;
+  padding: 0.5rem 0.8rem;
+  line-height: 1;
 }
 
 .mobile-home-toggle {
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 2.2rem;
+  height: 2.2rem;
   border: 0;
-  background: transparent;
+  background: #ffffff;
   padding: 0;
   display: inline-flex;
   flex-direction: column;
@@ -258,17 +265,20 @@ img {
 
 .mobile-home-toggle span {
   display: block;
-  width: 1.5rem;
+  width: 1.25rem;
   height: 2px;
   border-radius: 999px;
-  background: #ffffff;
+  background: var(--topbar-bg);
 }
 
 .mobile-home-menu {
   display: none;
+  width: min(92vw, 420px);
+  margin: 0.35rem auto 0;
   background: #ffffff;
   border-bottom: 1px solid var(--border);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  border-radius: 16px;
   padding: 0.75rem;
 }
 
