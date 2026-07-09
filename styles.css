@@ -1121,6 +1121,12 @@ h1 {
     padding-top: 0.35rem;
   }
 
+  .home .container.hero-layout {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+  }
+
   .home .hero-panel {
     max-width: none;
     margin-left: 0;
@@ -1134,7 +1140,9 @@ h1 {
   }
 
   .home-page .hero-panel {
-    width: 100%;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
     background: rgba(255, 255, 255, 0.9);
     border: 1px solid rgba(117, 43, 29, 0.24);
     border-radius: 0;
