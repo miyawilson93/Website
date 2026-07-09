@@ -2,17 +2,27 @@
   var toggle = document.getElementById("mobile-home-toggle");
   var menu = document.getElementById("mobile-home-menu");
   var mobileNav = document.querySelector(".mobile-home-nav");
+  var mobileNavBar = document.querySelector(".mobile-home-nav-bar");
   var floatingLogo = document.querySelector(".mobile-floating-logo");
   if (!toggle || !menu) {
     return;
   }
 
   function syncMobileNavOffset() {
-    if (!mobileNav) {
+    if (!mobileNav && !mobileNavBar) {
       return;
     }
 
-    document.documentElement.style.setProperty("--mobile-home-nav-offset", mobileNav.offsetHeight + "px");
+    var navBottom = mobileNavBar ? mobileNavBar.getBoundingClientRect().bottom : mobileNav.getBoundingClientRect().bottom;
+    var logoTop = navBottom + 8;
+    var contentTop = navBottom;
+
+    if (floatingLogo) {
+      document.documentElement.style.setProperty("--mobile-logo-top", logoTop + "px");
+      contentTop = logoTop + floatingLogo.offsetHeight;
+    }
+
+    document.documentElement.style.setProperty("--mobile-home-nav-offset", contentTop + "px");
   }
 
   function positionMenu() {

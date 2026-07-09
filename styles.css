@@ -323,19 +323,19 @@ img {
 
 @keyframes mobileLogoFlip180 {
   0% {
-    transform: translateX(0) rotate(0deg);
+    transform: translateX(-50%) rotate(0deg);
   }
 
   40% {
-    transform: translateX(0) rotate(0deg);
+    transform: translateX(-50%) rotate(0deg);
   }
 
   45% {
-    transform: translateX(-0.35in) rotate(180deg);
+    transform: translateX(calc(-50% - 0.35in)) rotate(180deg);
   }
 
   100% {
-    transform: translateX(-0.35in) rotate(180deg);
+    transform: translateX(calc(-50% - 0.35in)) rotate(180deg);
   }
 }
 
@@ -1027,7 +1027,10 @@ h1 {
     width: min(58vw, 220px);
     max-width: 100%;
     height: auto;
-    margin: 0.45rem auto 0.1rem;
+    margin: 0;
+    position: fixed;
+    left: 50%;
+    top: var(--mobile-logo-top, 7.25rem);
     filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.2));
     transform-origin: center;
     transform-style: flat;
