@@ -1001,7 +1001,7 @@ h1 {
   }
 
   .home .hero {
-    padding: 10.6rem 0 1.25rem;
+    padding: 10.2rem 0 1.25rem;
   }
 
   .home .hero-layout {
@@ -1013,7 +1013,7 @@ h1 {
   .home .hero-panel {
     max-width: none;
     margin-left: 0;
-    margin-top: calc(0.9rem + 1in) !important;
+    margin-top: 0 !important;
     margin-bottom: 0.75rem;
     padding: 0.85rem 0.85rem 0.7rem;
     background: #f3e3cb;
@@ -1027,7 +1027,7 @@ h1 {
     width: min(58vw, 220px);
     max-width: 100%;
     height: auto;
-    margin: 0.45rem auto 0.1rem;
+    margin: 0.45rem auto 0.5in;
     filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.2));
     transform-origin: center;
     transform-style: flat;
