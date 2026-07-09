@@ -8,7 +8,7 @@
       content="Move Wise offers reliable, efficient, and stress-free moving services for homes and businesses."
     />
     <title>MoveWise | Smart Moves start here</title>
-    <link rel="stylesheet" href="styles.css?v=16" />
+    <link rel="stylesheet" href="styles.css?v=17" />
     <style>
       body {
         background-image: linear-gradient(rgba(250, 243, 232, 0.78), rgba(250, 243, 232, 0.78)), url("Screenshot 2026-05-06 094613.png");
@@ -34,24 +34,6 @@
     </style>
   </head>
   <body class="home">
-    <div class="mobile-home-nav" aria-label="Mobile site navigation">
-      <div class="mobile-home-nav-bar">
-        <button class="mobile-home-toggle" type="button" aria-expanded="false" aria-controls="mobile-home-menu" id="mobile-home-toggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <a class="mobile-home-brand" href="index.html">MoveWise</a>
-      </div>
-      <nav class="mobile-home-menu" id="mobile-home-menu" aria-label="Subpages">
-        <a href="agent-coaching.html">Agent Coaching</a>
-        <a href="agent-resources.html">Agent Resources</a>
-        <a href="buying-selling.html">Buying/Selling a home</a>
-        <a href="about.html">About</a>
-        <a href="faq.html">FAQ</a>
-      </nav>
-    </div>
-
     <header class="hero">
       <div class="topbar">
         <div class="container">
@@ -63,13 +45,6 @@
           </span>
           <span class="contact-email">✉️ Miya.Wilson@outlook.com</span>
         </div>
-      </div>
-
-      <div class="mobile-intro-popup" aria-label="Home intro message">
-        <p class="eyebrow">Welcome</p>
-        <p class="mobile-intro-text">
-          Use the menu to visit Agent Coaching, Agent Resources, Buying/Selling a home, About, or FAQ.
-        </p>
       </div>
 
       <div class="subnav">
@@ -154,27 +129,6 @@
           or legal matters should be reviewed with a licensed professional.</p>
       </div>
     </footer>
-    <script>
-      (function () {
-        var toggle = document.getElementById("mobile-home-toggle");
-        var menu = document.getElementById("mobile-home-menu");
-        if (!toggle || !menu) {
-          return;
-        }
-
-        toggle.addEventListener("click", function () {
-          var isOpen = menu.classList.toggle("is-open");
-          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-        });
-
-        menu.querySelectorAll("a").forEach(function (link) {
-          link.addEventListener("click", function () {
-            menu.classList.remove("is-open");
-            toggle.setAttribute("aria-expanded", "false");
-          });
-        });
-      })();
-    </script>
     <script src="discount-popup.js?v=2" defer></script>
     <script src="cart.js?v=2" defer></script>
   </body>
