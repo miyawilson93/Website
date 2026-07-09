@@ -326,7 +326,11 @@ img {
     transform: translateX(0) rotate(0deg);
   }
 
-  50% {
+  25% {
+    transform: translateX(-0.35in) rotate(180deg);
+  }
+
+  75% {
     transform: translateX(-0.35in) rotate(180deg);
   }
 
@@ -997,7 +1001,7 @@ h1 {
   }
 
   .home .hero {
-    padding: 7.25rem 0 1.25rem;
+    padding: 8.7rem 0 1.25rem;
   }
 
   .home .hero-layout {
@@ -1009,7 +1013,7 @@ h1 {
   .home .hero-panel {
     max-width: none;
     margin-left: 0;
-    margin-top: 1in;
+    margin-top: 0.2rem;
     margin-bottom: 0.75rem;
     padding: 0.85rem 0.85rem 0.7rem;
     background: #f3e3cb;
@@ -1028,7 +1032,7 @@ h1 {
     transform-origin: center;
     transform-style: flat;
     backface-visibility: visible;
-    animation: mobileLogoFlip180 3s ease-in-out infinite;
+    animation: mobileLogoFlip180 6s ease-in-out infinite;
   }
 
   .home .hero-panel .eyebrow,
