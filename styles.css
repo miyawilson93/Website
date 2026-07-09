@@ -312,6 +312,10 @@ img {
   background: rgba(117, 43, 29, 0.12);
 }
 
+.mobile-floating-logo {
+  display: none;
+}
+
 .hero-layout {
   position: relative;
   display: grid;
@@ -331,10 +335,6 @@ img {
   padding-left: 0;
   position: relative;
   z-index: 3;
-}
-
-.mobile-bio-logo {
-  display: none;
 }
 
 .eyebrow {
@@ -990,12 +990,13 @@ h1 {
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
   }
 
-  .home .hero-panel .mobile-bio-logo {
+  .mobile-floating-logo {
     display: block;
-    width: min(65vw, 240px);
+    width: min(58vw, 220px);
     max-width: 100%;
     height: auto;
-    margin: 0 auto 0.55rem;
+    margin: 0.45rem auto 0.1rem;
+    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.2));
   }
 
   .home .hero-panel .eyebrow,
