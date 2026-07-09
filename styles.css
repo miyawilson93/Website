@@ -1027,10 +1027,7 @@ h1 {
     width: min(64vw, 250px);
     max-width: 100%;
     height: auto;
-    margin: 0;
-    position: fixed;
-    left: 50%;
-    top: var(--mobile-logo-top, 7.25rem);
+    margin: 0.35rem auto 0.5in;
     filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.2));
     transform-origin: center;
     transform-style: flat;
