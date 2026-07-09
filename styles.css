@@ -23,7 +23,7 @@ body {
 }
 
 .coaching-page {
-  background-image: linear-gradient(rgba(250, 243, 232, 0.78), rgba(250, 243, 232, 0.78)), url("Screenshot 2026-05-06 094739.png");
+  background-image: linear-gradient(rgba(250, 243, 232, 0.64), rgba(250, 243, 232, 0.64)), url("Screenshot 2026-05-06 094739.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -43,7 +43,7 @@ body {
 }
 
 .resources-page {
-  background-image: linear-gradient(rgba(250, 243, 232, 0.72), rgba(250, 243, 232, 0.72)), url("Screenshot 2026-05-06 095430.png");
+  background-image: linear-gradient(rgba(250, 243, 232, 0.52), rgba(250, 243, 232, 0.52)), url("Screenshot 2026-05-06 095430.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -51,7 +51,7 @@ body {
 }
 
 .faq-page {
-  background-image: linear-gradient(rgba(250, 243, 232, 0.72), rgba(250, 243, 232, 0.72)), url("Screenshot 2026-05-06 095358.png");
+  background-image: linear-gradient(rgba(250, 243, 232, 0.52), rgba(250, 243, 232, 0.52)), url("Screenshot 2026-05-06 095358.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -1045,6 +1045,19 @@ h1 {
 }
 
 @media (max-width: 900px) {
+  .coaching-page,
+  .resources-page,
+  .faq-page {
+    background-attachment: scroll;
+    background-position: center top;
+  }
+
+  .resources-page .coaching-card,
+  .faq-page .coaching-card,
+  .coaching-page .coaching-card {
+    background: rgba(255, 255, 255, 0.32);
+  }
+
   .mobile-home-nav {
     display: block;
     position: fixed;
