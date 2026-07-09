@@ -69,6 +69,10 @@ body {
   transform: scale(1.03);
 }
 
+.buying-selling-page::before {
+  filter: blur(2.6px);
+}
+
 .home-page .hero,
 .home-page .footer,
 .coaching-page .hero,
@@ -1069,6 +1073,13 @@ h1 {
   .faq-page::before {
     background-position: center top;
     filter: blur(1.6px);
+  }
+
+  .buying-selling-page::before {
+    background-size: contain;
+    background-position: center top;
+    filter: blur(2.2px);
+    transform: scale(1);
   }
 
   .home:not(.home-page) .coaching-card,
