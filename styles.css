@@ -956,7 +956,13 @@ h1 {
   .home .hero-panel {
     max-width: none;
     margin-left: 0;
-    padding: 0 0 0.4rem;
+    margin-top: 1in;
+    margin-bottom: 0.75rem;
+    padding: 0.85rem 0.85rem 0.7rem;
+    background: #f3e3cb;
+    border: 1px solid rgba(117, 43, 29, 0.28);
+    border-radius: 16px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
   }
 
   .home .hero-panel .eyebrow,

@@ -4,9 +4,26 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Seller Consultation Guide</title>
-    <link rel="stylesheet" href="styles.css?v=17" />
+    <link rel="stylesheet" href="styles.css?v=19" />
   </head>
   <body class="home">
+    <div class="mobile-home-nav" aria-label="Mobile site navigation">
+      <div class="mobile-home-nav-bar">
+        <a class="mobile-home-brand" href="index.html">MoveWise</a>
+        <button class="mobile-home-toggle" type="button" aria-expanded="false" aria-controls="mobile-home-menu" id="mobile-home-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="mobile-home-menu" id="mobile-home-menu" aria-label="Subpages">
+        <a href="agent-coaching.html">Agent Coaching</a>
+        <a href="agent-resources.html">Agent Resources</a>
+        <a href="buying-selling.html">Buying/Selling a home</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </div>
     <header class="hero">
       <div class="topbar">
         <div class="container">
@@ -69,5 +86,6 @@
       </div>
     </footer>
     <script src="cart.js?v=2" defer></script>
+    <script src="mobile-menu.js?v=1" defer></script>
   </body>
 </html>
