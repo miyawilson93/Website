@@ -284,13 +284,18 @@ img {
 
 .mobile-home-menu {
   display: none;
-  width: min(88vw, 460px);
-  margin: 0.35rem auto 0;
+  width: min(72vw, 280px);
+  margin: 0;
   background: #ffffff;
   border-bottom: 1px solid var(--border);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
   border-radius: 16px;
   padding: 0.75rem;
+  position: fixed;
+  max-height: 52vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 1301;
 }
 
 .mobile-home-menu.is-open {
