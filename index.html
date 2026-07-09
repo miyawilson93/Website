@@ -8,7 +8,7 @@
       content="Move Wise offers reliable, efficient, and stress-free moving services for homes and businesses."
     />
     <title>MoveWise | Smart Moves start here</title>
-    <link rel="stylesheet" href="styles.css?v=17" />
+    <link rel="stylesheet" href="styles.css?v=18" />
     <style>
       body {
         background-image: linear-gradient(rgba(250, 243, 232, 0.78), rgba(250, 243, 232, 0.78)), url("Screenshot 2026-05-06 094613.png");
@@ -34,6 +34,28 @@
     </style>
   </head>
   <body class="home">
+    <div class="mobile-home-nav" aria-label="Mobile site navigation">
+      <div class="mobile-home-topbar">
+        <span class="contact-phone"><span class="phone-number">205-994-9499</span></span>
+        <span class="contact-email">Miya.Wilson@outlook.com</span>
+      </div>
+      <div class="mobile-home-nav-bar">
+        <a class="mobile-home-brand" href="index.html">MoveWise</a>
+        <button class="mobile-home-toggle" type="button" aria-expanded="false" aria-controls="mobile-home-menu" id="mobile-home-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="mobile-home-menu" id="mobile-home-menu" aria-label="Subpages">
+        <a href="agent-coaching.html">Agent Coaching</a>
+        <a href="agent-resources.html">Agent Resources</a>
+        <a href="buying-selling.html">Buying/Selling a home</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </div>
+
     <header class="hero">
       <div class="topbar">
         <div class="container">
@@ -131,5 +153,26 @@
     </footer>
     <script src="discount-popup.js?v=2" defer></script>
     <script src="cart.js?v=2" defer></script>
+    <script>
+      (function () {
+        var toggle = document.getElementById("mobile-home-toggle");
+        var menu = document.getElementById("mobile-home-menu");
+        if (!toggle || !menu) {
+          return;
+        }
+
+        toggle.addEventListener("click", function () {
+          var isOpen = menu.classList.toggle("is-open");
+          toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        menu.querySelectorAll("a").forEach(function (link) {
+          link.addEventListener("click", function () {
+            menu.classList.remove("is-open");
+            toggle.setAttribute("aria-expanded", "false");
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

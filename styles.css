@@ -200,6 +200,97 @@ img {
   color: var(--primary);
 }
 
+.mobile-home-nav {
+  display: none;
+}
+
+.mobile-home-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--topbar-bg);
+  color: #ffffff;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.mobile-home-topbar .contact-phone,
+.mobile-home-topbar .contact-email {
+  white-space: nowrap;
+}
+
+.mobile-home-nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: var(--topbar-bg);
+  color: #ffffff;
+  padding: 0.45rem 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+.mobile-home-brand {
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.mobile-home-toggle {
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.28rem;
+  cursor: pointer;
+}
+
+.mobile-home-toggle span {
+  display: block;
+  width: 1.5rem;
+  height: 2px;
+  border-radius: 999px;
+  background: #ffffff;
+}
+
+.mobile-home-menu {
+  display: none;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  padding: 0.75rem;
+}
+
+.mobile-home-menu.is-open {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.mobile-home-menu a {
+  display: block;
+  color: #000000;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.65rem 0.75rem;
+  border-radius: 10px;
+  background: rgba(117, 43, 29, 0.06);
+}
+
+.mobile-home-menu a:hover {
+  background: rgba(117, 43, 29, 0.12);
+}
+
 .hero-layout {
   position: relative;
   display: grid;
@@ -833,6 +924,19 @@ h1 {
     background-attachment: scroll !important;
   }
 
+  .mobile-home-nav {
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 1200;
+  }
+
+  .topbar,
+  .home .subnav,
+  .home .nav {
+    display: none;
+  }
+
   .home .hero,
   .home main,
   .home .footer {
@@ -840,45 +944,19 @@ h1 {
   }
 
   .home .hero {
-    padding-top: calc(0.5in + 1in + 1rem);
+    padding: 0.35rem 0 1.25rem;
   }
 
   .home .hero-layout {
     grid-template-columns: 1fr;
-    gap: 1rem;
-    padding-top: 0;
-  }
-
-  .home .hero-panel {
-    margin-left: 0;
-    padding: 0;
-    max-width: none;
-  }
-
-  .home .hero-visual,
-  .home .hero-visual-card,
-  .home .hero-visual-popout,
-  .home .hero-visual-bg {
-    display: none !important;
-  }
-
-  .home .section {
-    padding: 1rem 0 0;
-  }
-
-  .home .footer-content {
-    color: #000000;
-  }
-
-  .home .footer p,
-  .home .disclaimer {
-    color: #000000;
+    gap: 0.75rem;
+    padding-top: 0.35rem;
   }
 
   .home .hero-panel {
     max-width: none;
-    padding: 0 0 1rem;
     margin-left: 0;
+    padding: 0 0 0.4rem;
   }
 
   .home .hero-panel .eyebrow,
@@ -889,30 +967,63 @@ h1 {
   }
 
   .home .hero-panel .eyebrow {
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    margin-bottom: 0.75rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.35rem;
   }
 
   .home .hero-panel h1 {
-    font-size: 1.7rem;
-    line-height: 1.15;
-    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+    line-height: 1.12;
+    margin-bottom: 0.35rem;
   }
 
   .home .hero-panel .hero-text {
-    font-size: 0.96rem;
-    line-height: 1.55;
-    margin-bottom: 0.85rem;
+    font-size: 0.8rem;
+    line-height: 1.35;
+    margin-bottom: 0.45rem;
   }
 
   .home .hero-panel .hero-cta {
-    margin-top: 0.35rem;
+    margin-top: 0.1rem;
+    padding: 0.72rem 0.95rem;
+    font-size: 0.8rem;
+  }
+
+  .home .hero-visual,
+  .home .hero-visual-card,
+  .home .hero-visual-popout,
+  .home .hero-visual-bg {
+    display: none !important;
+  }
+
+  .home .section {
+    padding: 0.85rem 0 0;
+  }
+
+  .home .footer-content,
+  .home .footer p,
+  .home .disclaimer {
+    color: #000000;
+  }
+
+  .home .hero-panel .eyebrow,
+  .home .hero-panel h1,
+  .home .hero-panel .hero-text,
+  .home .hero-panel .hero-cta {
+    display: block;
   }
 
   .home main .section-heading,
   .home main .mobile-intro-text {
     display: none;
+  }
+
+  .topbar .container {
+    justify-content: center;
+    gap: 0.2rem 0.65rem;
+    font-size: 0.7rem;
+    white-space: nowrap;
   }
 }
 
