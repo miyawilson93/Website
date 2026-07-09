@@ -1066,6 +1066,18 @@ h1 {
 }
 
 @media (max-width: 900px) {
+  .buying-selling-page .mobile-home-topbar {
+    display: none;
+  }
+
+  .buying-selling-page .mobile-home-nav {
+    top: clamp(8.5rem, 20vh, 11.5rem);
+  }
+
+  .buying-selling-page .mobile-home-nav-bar {
+    margin-top: 0;
+  }
+
   .home-page::before,
   .coaching-page::before,
   .buying-selling-page::before,
