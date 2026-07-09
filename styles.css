@@ -408,6 +408,7 @@ img {
   justify-content: center;
   gap: 0.28rem;
   cursor: pointer;
+  transform: translateX(-0.2rem);
 }
 
 .mobile-home-toggle span {
