@@ -936,7 +936,7 @@ h1 {
     background-size: cover !important;
     background-position: center top !important;
     background-repeat: no-repeat !important;
-    background-attachment: scroll !important;
+    background-attachment: fixed !important;
   }
 
   .mobile-home-nav {
