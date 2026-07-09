@@ -892,6 +892,13 @@ h1 {
   color: #000000;
 }
 
+.discount-modal-disclaimer {
+  margin: 0.65rem 0 0;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: rgba(0, 0, 0, 0.78);
+}
+
 .discount-modal-code {
   margin-top: 0.9rem;
   padding: 0.85rem;

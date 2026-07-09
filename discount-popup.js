@@ -46,6 +46,7 @@
       "  </form>",
       '  <div class="discount-modal-code" id="discount-code">Your discount code: WiseMoves25</div>',
       '  <button class="discount-modal-close" id="discount-close" type="button">Close</button>',
+      '  <p class="discount-modal-disclaimer">Disclaimer : You agree to marketing emails once email is entered for the discount.</p>',
       "</div>",
     ].join("\n");
 
