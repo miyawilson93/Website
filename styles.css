@@ -316,17 +316,17 @@ img {
   display: none;
 }
 
-@keyframes mobileLogoFlipZoom {
+@keyframes mobileLogoFlip180 {
   0% {
-    transform: scale(1) rotateX(0deg);
+    transform: rotateX(0deg);
   }
 
   50% {
-    transform: scale(1.2) rotateX(180deg);
+    transform: rotateX(180deg);
   }
 
   100% {
-    transform: scale(1) rotateX(0deg);
+    transform: rotateX(0deg);
   }
 }
 
@@ -965,8 +965,10 @@ h1 {
 
   .mobile-home-nav {
     display: block;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     z-index: 1200;
   }
 
@@ -983,7 +985,7 @@ h1 {
   }
 
   .home .hero {
-    padding: 0.35rem 0 1.25rem;
+    padding: 7.25rem 0 1.25rem;
   }
 
   .home .hero-layout {
@@ -1009,12 +1011,12 @@ h1 {
     width: min(58vw, 220px);
     max-width: 100%;
     height: auto;
-    margin: 0.45rem auto 0.1rem;
+    margin: 0.5in auto 0.1rem;
     filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.2));
     transform-origin: center;
     transform-style: preserve-3d;
     backface-visibility: visible;
-    animation: mobileLogoFlipZoom 6s ease-in-out infinite;
+    animation: mobileLogoFlip180 3s ease-in-out infinite;
   }
 
   .home .hero-panel .eyebrow,
