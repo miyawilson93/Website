@@ -354,6 +354,40 @@ img {
   white-space: nowrap;
 }
 
+.mobile-cart-trigger {
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid rgba(117, 43, 29, 0.4);
+  border-radius: 999px;
+  background: #752B1D;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.mobile-cart-trigger:hover {
+  background: #612116;
+}
+
+.mobile-cart-count {
+  position: absolute;
+  top: -0.32rem;
+  right: -0.3rem;
+  min-width: 1rem;
+  height: 1rem;
+  padding: 0 0.24rem;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #752B1D;
+  font-size: 0.62rem;
+  line-height: 1rem;
+  font-weight: 700;
+}
+
 .mobile-home-toggle {
   width: 2.12rem;
   height: 2.12rem;
