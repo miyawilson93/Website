@@ -323,19 +323,19 @@ img {
 
 @keyframes mobileLogoFlip180 {
   0% {
-    transform: translateX(-50%) rotate(0deg);
+    transform: rotate(0deg);
   }
 
   40% {
-    transform: translateX(-50%) rotate(0deg);
+    transform: rotate(0deg);
   }
 
   45% {
-    transform: translateX(calc(-50% - 0.35in)) rotate(180deg);
+    transform: rotate(180deg);
   }
 
   100% {
-    transform: translateX(calc(-50% - 0.35in)) rotate(180deg);
+    transform: rotate(180deg);
   }
 }
 
