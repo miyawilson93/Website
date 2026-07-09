@@ -42,6 +42,29 @@ body {
   background: transparent;
 }
 
+.resources-page {
+  background-image: linear-gradient(rgba(250, 243, 232, 0.72), rgba(250, 243, 232, 0.72)), url("Screenshot 2026-05-06 095430.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.faq-page {
+  background-image: linear-gradient(rgba(250, 243, 232, 0.72), rgba(250, 243, 232, 0.72)), url("Screenshot 2026-05-06 095358.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.resources-page .hero,
+.resources-page .footer,
+.faq-page .hero,
+.faq-page .footer {
+  background: transparent;
+}
+
 @media (max-width: 900px) {
   .buying-selling-page {
     background-attachment: scroll;
@@ -264,12 +287,12 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 0.8rem;
+  gap: 0.55rem;
   width: min(88vw, 460px);
   margin: 0.5in auto 0;
   background: #ffffff;
   color: #000000;
-  padding: 0.42rem 0.55rem;
+  padding: 0.36rem 0.5rem;
   border: 2px solid rgba(117, 43, 29, 0.3);
   border-radius: 999px;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.2);
@@ -310,15 +333,15 @@ img {
   flex: 1;
   text-align: center;
   color: var(--topbar-bg);
-  font-size: 0.72rem;
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
   white-space: nowrap;
 }
 
 .mobile-home-toggle {
-  width: 2.35rem;
-  height: 2.35rem;
+  width: 2.12rem;
+  height: 2.12rem;
   border: 0;
   background: #ffffff;
   border-left: 1px solid rgba(117, 43, 29, 0.22);
@@ -1034,6 +1057,16 @@ h1 {
     background-position: center top !important;
     background-repeat: no-repeat !important;
     background-attachment: fixed !important;
+  }
+
+  body.home.resources-page {
+    background-image: linear-gradient(rgba(250, 243, 232, 0.72), rgba(250, 243, 232, 0.72)), url("Screenshot 2026-05-06 095430.png") !important;
+    background-attachment: scroll !important;
+  }
+
+  body.home.faq-page {
+    background-image: linear-gradient(rgba(250, 243, 232, 0.72), rgba(250, 243, 232, 0.72)), url("Screenshot 2026-05-06 095358.png") !important;
+    background-attachment: scroll !important;
   }
 
   .mobile-home-nav {
