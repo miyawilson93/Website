@@ -249,6 +249,16 @@ img {
   line-height: 1;
 }
 
+.mobile-home-hint {
+  flex: 1;
+  text-align: center;
+  color: var(--topbar-bg);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
 .mobile-home-toggle {
   width: 2.35rem;
   height: 2.35rem;
