@@ -1,5 +1,27 @@
 (function () {
   var POPUP_SEEN_KEY = "movewise_discount_popup_seen";
+  var ALERT_EMAIL = "Miya.Wilson@outlook.com";
+  var ALERT_ENDPOINT = "https://formsubmit.co/" + encodeURIComponent(ALERT_EMAIL);
+
+  function notifyOwner(emailValue) {
+    var payload = new URLSearchParams({
+      email: emailValue,
+      source: "Discount Popup",
+      page: window.location.href,
+      _subject: "New discount popup email lead",
+      _captcha: "false",
+      _template: "table",
+    });
+
+    return fetch(ALERT_ENDPOINT, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: payload.toString(),
+    });
+  }
 
   function buildModal() {
     if (window.sessionStorage.getItem(POPUP_SEEN_KEY) === "1") {
@@ -30,12 +52,29 @@
     document.body.appendChild(modal);
 
     var form = document.getElementById("discount-form");
+    var emailInput = document.getElementById("discount-email");
+    var submitBtn = form.querySelector("button[type='submit']");
     var codeBox = document.getElementById("discount-code");
     var closeBtn = document.getElementById("discount-close");
 
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", async function (event) {
       event.preventDefault();
       if (form.checkValidity()) {
+        var enteredEmail = (emailInput.value || "").trim();
+        if (submitBtn) {
+          submitBtn.disabled = true;
+        }
+
+        try {
+          await notifyOwner(enteredEmail);
+        } catch (error) {
+          // Keep user flow unblocked even if lead alert fails.
+        }
+
+        if (submitBtn) {
+          submitBtn.disabled = false;
+        }
+
         codeBox.classList.add("is-visible");
       }
     });
