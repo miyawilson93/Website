@@ -1071,11 +1071,12 @@ h1 {
     filter: blur(1.6px);
   }
 
-  .resources-page .coaching-card,
-  .faq-page .coaching-card,
-  .coaching-page .coaching-card,
-  .buying-selling-page .coaching-card {
-    background: rgba(255, 255, 255, 0.2);
+  .home:not(.home-page) .coaching-card,
+  .home:not(.home-page) .card,
+  .home:not(.home-page) .stats-box,
+  .home:not(.home-page) .contact-box {
+    background: rgba(255, 255, 255, 0.78);
+    border-color: rgba(117, 43, 29, 0.34);
   }
 
   .mobile-home-nav {
@@ -1119,6 +1120,15 @@ h1 {
     border: 0;
     border-radius: 0;
     box-shadow: none;
+  }
+
+  .home-page .hero-panel {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(117, 43, 29, 0.24);
+    border-radius: 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 0.9rem 0.95rem 0.75rem;
   }
 
   .mobile-floating-logo {
