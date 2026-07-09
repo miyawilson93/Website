@@ -774,9 +774,121 @@ h1 {
   display: block;
 }
 
-@media (max-width: 1120px) {
-  html,
-  body {
-    min-width: 1120px;
+@media (max-width: 1020px) {
+  .about-story-row,
+  .about-story-row.reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .about-story-row.reverse .about-photo-slot,
+  .about-story-row.reverse .coaching-card {
+    order: initial;
+  }
+
+  .resource-grid,
+  .about-grid,
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .hero-panel {
+    margin-left: 0;
+    padding: 1.5rem 0 0;
+    max-width: none;
+  }
+
+  .hero-visual {
+    min-height: 360px;
+  }
+
+  .hero-visual-card {
+    height: 320px;
+    min-height: 320px;
+  }
+
+  .hero-visual-popout {
+    width: 220px;
+    height: 165px;
+    left: auto;
+    right: 0.75rem;
+    top: 0.85rem;
+    transform: none;
+  }
+
+  .contact-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 720px) {
+  .home .topbar .container {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem 1rem;
+  }
+
+  .home .subnav .container {
+    justify-content: center;
+    gap: 0.35rem;
+  }
+
+  .home .subnav .subnav-home-link {
+    position: static;
+    transform: none;
+    margin-right: 0.2rem;
+  }
+
+  .home .subnav .subnav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 0.85rem;
+  }
+
+  .nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-actions {
+    margin-left: 0;
+  }
+
+  .hero-cta {
+    width: 100%;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 8vw, 2.5rem);
+  }
+}
+
+@media (max-width: 560px) {
+  .logo {
+    height: 0.72in;
+  }
+
+  .hero-visual-popout {
+    display: none;
+  }
+
+  .hero-visual-card {
+    height: 250px;
+    min-height: 250px;
+  }
+
+  .section {
+    padding: 3.25rem 0;
+  }
+
+  main.section.container > h1 {
+    font-size: 1.35rem;
+    line-height: 1.2;
   }
 }
