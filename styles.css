@@ -1083,18 +1083,23 @@ h1 {
 
   .buying-selling-page::before {
     background-size: contain;
-    background-position: center 3.1rem;
+    background-position: center 9.1rem;
     filter: blur(2.2px);
     transform: scale(1);
   }
 
   .coaching-page main.section.container > p:first-of-type,
   .resources-page main.section.container > p:first-of-type {
+    display: inline-block;
     background: #e5e5e5;
     border: 1px solid rgba(117, 43, 29, 0.34);
-    border-radius: 12px;
-    padding: 0.75rem 0.85rem;
-    margin-top: 0.6rem;
+    border-radius: 10px;
+    padding: 0.45rem 0.62rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0.55rem;
+    font-size: 0.78rem;
+    line-height: 1.25;
+    max-width: min(100%, 460px);
   }
 
   .home:not(.home-page) .coaching-card,
