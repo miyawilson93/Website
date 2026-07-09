@@ -910,11 +910,11 @@ h1 {
 
 @media (max-width: 720px) {
   body.home {
-    background-image: url("Screenshot 2026-05-06 094613.png");
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
+    background-image: url("Screenshot 2026-05-06 094613.png") !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
   }
 
   .home .topbar,
@@ -930,7 +930,7 @@ h1 {
   .home .hero,
   .home main,
   .home .footer {
-    background: #ffffff;
+    background: transparent;
   }
 
   .home .hero {
@@ -949,6 +949,15 @@ h1 {
     max-width: none;
   }
 
+  .home .hero-panel .eyebrow,
+  .home .hero-panel h1,
+  .home .hero-panel .hero-text,
+  .home .hero-panel .hero-cta,
+  .home main .section-heading,
+  .home main .mobile-intro-text {
+    display: none;
+  }
+
   .home .hero-visual,
   .home .hero-visual-card,
   .home .hero-visual-popout,
@@ -957,7 +966,7 @@ h1 {
   }
 
   .home .section {
-    padding: 3rem 0;
+    padding: 1rem 0 0;
   }
 
   .home .footer-content {
@@ -999,15 +1008,6 @@ h1 {
 
   .nav-actions {
     margin-left: 0;
-  }
-
-  .hero-cta {
-    width: 100%;
-    text-align: center;
-  }
-
-  h1 {
-    font-size: clamp(1.8rem, 8vw, 2.5rem);
   }
 }
 
