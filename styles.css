@@ -22,42 +22,59 @@ body {
   line-height: 1.6;
 }
 
-.coaching-page {
-  background-image: linear-gradient(rgba(250, 243, 232, 0.64), rgba(250, 243, 232, 0.64)), url("Screenshot 2026-05-06 094739.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-}
-
-.buying-selling-page {
-  background-image: linear-gradient(rgba(250, 243, 232, 0.72), rgba(250, 243, 232, 0.72)), url("Image (36).jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-}
-
-.buying-selling-page .hero {
+.home-page,
+.coaching-page,
+.buying-selling-page,
+.resources-page,
+.faq-page {
+  position: relative;
+  isolation: isolate;
   background: transparent;
 }
 
+.home-page {
+  --page-background-image: url("Screenshot 2026-05-06 094613.png");
+}
+
+.coaching-page {
+  --page-background-image: url("Screenshot 2026-05-06 094739.png");
+}
+
+.buying-selling-page {
+  --page-background-image: url("Image (36).jpg");
+}
+
 .resources-page {
-  background-image: linear-gradient(rgba(250, 243, 232, 0.52), rgba(250, 243, 232, 0.52)), url("Screenshot 2026-05-06 095430.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  --page-background-image: url("Screenshot 2026-05-06 095430.png");
 }
 
 .faq-page {
-  background-image: linear-gradient(rgba(250, 243, 232, 0.52), rgba(250, 243, 232, 0.52)), url("Screenshot 2026-05-06 095358.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  --page-background-image: url("Screenshot 2026-05-06 095358.png");
 }
 
+.home-page::before,
+.coaching-page::before,
+.buying-selling-page::before,
+.resources-page::before,
+.faq-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--page-background-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(2px);
+  transform: scale(1.03);
+}
+
+.home-page .hero,
+.home-page .footer,
+.coaching-page .hero,
+.coaching-page .footer,
+.buying-selling-page .hero,
+.buying-selling-page .footer,
 .resources-page .hero,
 .resources-page .footer,
 .faq-page .hero,
@@ -1045,17 +1062,20 @@ h1 {
 }
 
 @media (max-width: 900px) {
-  .coaching-page,
-  .resources-page,
-  .faq-page {
-    background-attachment: scroll;
+  .home-page::before,
+  .coaching-page::before,
+  .buying-selling-page::before,
+  .resources-page::before,
+  .faq-page::before {
     background-position: center top;
+    filter: blur(1.6px);
   }
 
   .resources-page .coaching-card,
   .faq-page .coaching-card,
-  .coaching-page .coaching-card {
-    background: rgba(255, 255, 255, 0.32);
+  .coaching-page .coaching-card,
+  .buying-selling-page .coaching-card {
+    background: rgba(255, 255, 255, 0.2);
   }
 
   .mobile-home-nav {
@@ -1094,11 +1114,11 @@ h1 {
     margin-left: 0;
     margin-top: 0 !important;
     margin-bottom: 0.75rem;
-    padding: 0.85rem 0.85rem 0.7rem;
-    background: #f3e3cb;
-    border: 1px solid rgba(117, 43, 29, 0.28);
-    border-radius: 16px;
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+    padding: 0.85rem 0.65rem 0.7rem;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .mobile-floating-logo {
@@ -1125,18 +1145,24 @@ h1 {
     font-size: 0.62rem;
     letter-spacing: 0.14em;
     margin-bottom: 0.35rem;
+    color: #18100c;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.45);
   }
 
   .home .hero-panel h1 {
     font-size: 1.25rem;
     line-height: 1.12;
     margin-bottom: 0.35rem;
+    color: #130d09;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.45);
   }
 
   .home .hero-panel .hero-text {
     font-size: 0.8rem;
     line-height: 1.35;
     margin-bottom: 0.45rem;
+    color: #130d09;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.45);
   }
 
   .home .hero-panel .hero-cta {
@@ -1160,6 +1186,32 @@ h1 {
   .home .footer p,
   .home .disclaimer {
     color: #000000;
+  }
+
+  .home .footer {
+    padding: 0.9rem 0 0;
+  }
+
+  .home .footer .container.footer-content {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    gap: 0.5rem;
+    padding: 0;
+  }
+
+  .home .footer .container.footer-content > p {
+    width: 100%;
+    margin: 0;
+    padding: 0 1rem;
+  }
+
+  .home .footer .container.footer-content .disclaimer {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+    padding: 0.85rem 1rem;
   }
 
   .home .hero-panel .eyebrow,
