@@ -204,8 +204,8 @@ img {
 
 .cart-trigger {
   border: 1px solid rgba(117, 43, 29, 0.45);
-  background: #ffffff;
-  color: #000000;
+  background: #752B1D;
+  color: #ffffff;
   border-radius: 999px;
   padding: 0.45rem 0.7rem;
   font-weight: 700;
@@ -217,7 +217,7 @@ img {
 }
 
 .cart-trigger:hover {
-  background: #f0e2d7;
+  background: #612116;
 }
 
 .cart-icon {
@@ -229,8 +229,8 @@ img {
   height: 1.25rem;
   padding: 0 0.32rem;
   border-radius: 999px;
-  background: #752B1D;
-  color: #ffffff;
+  background: #ffffff;
+  color: #752B1D;
   font-size: 0.72rem;
   font-weight: 700;
   line-height: 1.25rem;
@@ -485,8 +485,8 @@ h1 {
 
 .hero-cta {
   padding: 1rem 1.6rem;
-  background: var(--primary);
-  color: #000000;
+  background: #752B1D;
+  color: #ffffff;
   border-radius: 999px;
   text-decoration: none;
   display: inline-block;
@@ -495,7 +495,7 @@ h1 {
 }
 
 .hero-cta:hover {
-  background: #304fcf;
+  background: #612116;
   transform: translateY(-1px);
 }
 
@@ -647,16 +647,17 @@ h1 {
 
 .coaching-menu a {
   text-decoration: none;
-  color: #000000;
+  color: #ffffff;
   border: 1px solid rgba(117, 43, 29, 0.4);
+  background: #752B1D;
   padding: 0.45rem 0.75rem;
   border-radius: 999px;
   font-weight: 700;
 }
 
 .coaching-menu a:hover {
-  background: #752B1D;
-  color: #000000;
+  background: #612116;
+  color: #ffffff;
 }
 
 .coaching-card {
@@ -703,21 +704,22 @@ h1 {
   padding: 0.5rem 0.8rem;
   border-radius: 999px;
   border: 1px solid rgba(117, 43, 29, 0.45);
-  color: #000000;
+  color: #ffffff;
+  background: #752B1D;
   text-decoration: none;
   font-weight: 700;
 }
 
 .resource-link:hover {
-  background: #752B1D;
-  color: #000000;
+  background: #612116;
+  color: #ffffff;
 }
 
 .add-cart-btn {
   margin-top: 0.55rem;
   border: 1px solid rgba(117, 43, 29, 0.45);
-  background: #ffffff;
-  color: #000000;
+  background: #752B1D;
+  color: #ffffff;
   border-radius: 999px;
   padding: 0.45rem 0.85rem;
   font-weight: 700;
@@ -725,7 +727,7 @@ h1 {
 }
 
 .add-cart-btn:hover {
-  background: #f0e2d7;
+  background: #612116;
 }
 
 .cart-overlay {
@@ -803,11 +805,15 @@ h1 {
 .cart-btn {
   border: 1px solid rgba(117, 43, 29, 0.45);
   border-radius: 999px;
-  background: #fff;
-  color: #000;
+  background: #752B1D;
+  color: #fff;
   padding: 0.35rem 0.75rem;
   font-weight: 700;
   cursor: pointer;
+}
+
+.cart-btn:hover {
+  background: #612116;
 }
 
 .about-story-row {
@@ -981,14 +987,14 @@ h1 {
 }
 
 .discount-modal-button {
-  background: #782b1d;
-  color: #000000;
+  background: #752B1D;
+  color: #ffffff;
 }
 
 .discount-modal-close {
   margin-top: 0.8rem;
-  background: #e9ddd4;
-  color: #000000;
+  background: #752B1D;
+  color: #ffffff;
 }
 
 .discount-modal-disclaimer {
@@ -1066,18 +1072,6 @@ h1 {
 }
 
 @media (max-width: 900px) {
-  .buying-selling-page .mobile-home-topbar {
-    display: none;
-  }
-
-  .buying-selling-page .mobile-home-nav {
-    top: clamp(8.5rem, 20vh, 11.5rem);
-  }
-
-  .buying-selling-page .mobile-home-nav-bar {
-    margin-top: 0;
-  }
-
   .home-page::before,
   .coaching-page::before,
   .buying-selling-page::before,
@@ -1089,9 +1083,18 @@ h1 {
 
   .buying-selling-page::before {
     background-size: contain;
-    background-position: center top;
+    background-position: center 3.1rem;
     filter: blur(2.2px);
     transform: scale(1);
+  }
+
+  .coaching-page main.section.container > p:first-of-type,
+  .resources-page main.section.container > p:first-of-type {
+    background: #e5e5e5;
+    border: 1px solid rgba(117, 43, 29, 0.34);
+    border-radius: 12px;
+    padding: 0.75rem 0.85rem;
+    margin-top: 0.6rem;
   }
 
   .home:not(.home-page) .coaching-card,
