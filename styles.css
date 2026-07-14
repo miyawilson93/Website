@@ -718,6 +718,16 @@ h1 {
   color: #000000;
 }
 
+.resource-feature-banner {
+  margin-top: 0.8rem;
+  border: 2px solid rgba(117, 43, 29, 0.45);
+  background: linear-gradient(135deg, rgba(255, 244, 204, 0.95), rgba(255, 255, 255, 0.92));
+}
+
+.resource-feature-banner h2 {
+  margin-top: 0;
+}
+
 .award-photo {
   margin: 0.35rem 0 0.9rem;
   width: min(100%, 480px);
@@ -755,6 +765,31 @@ h1 {
 .resource-link:hover {
   background: #612116;
   color: #ffffff;
+}
+
+.coming-soon-pill {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.12rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid rgba(117, 43, 29, 0.35);
+  background: #fff4cc;
+  color: #752B1D;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  vertical-align: middle;
+}
+
+.coming-soon-note {
+  display: inline-block;
+  margin: 0.2rem 0 0.55rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(117, 43, 29, 0.3);
+  background: rgba(255, 255, 255, 0.8);
+  color: #2f221d;
+  font-weight: 700;
 }
 
 .add-cart-btn {
