@@ -29,7 +29,7 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: -2;
-  filter: blur(10px);
+  filter: blur(6px);
   transform: scale(1.08);
 }
 
@@ -775,6 +775,13 @@ h1 {
   color: #ffd9b0;
 }
 
+.home.buying-selling-page p,
+.home.buying-selling-page li,
+.home.buying-selling-page a {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 .buying-top-banner {
   margin: 0 0 1.25rem;
 }
@@ -1314,6 +1321,11 @@ h1 {
 }
 
 @media (max-width: 1020px) {
+  .page-background-video {
+    filter: blur(3px);
+    transform: scale(1.02);
+  }
+
   .buying-intro-layout {
     grid-template-columns: 1fr;
   }
