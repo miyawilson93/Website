@@ -361,6 +361,11 @@ img {
   line-height: 1;
 }
 
+.buying-selling-page .mobile-home-brand {
+  font-size: 0.86rem;
+  padding: 0.48rem 0.72rem;
+}
+
 .mobile-home-icon {
   width: 2rem;
   height: 2rem;
@@ -863,6 +868,29 @@ h1 {
   color: #f5f8ff;
   font-weight: 700;
   font-size: 0.9rem;
+}
+
+.home-plan-title {
+  display: inline-block;
+  margin: 1.1rem 0 0.35rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 217, 176, 0.24), rgba(65, 105, 225, 0.2));
+  border: 1px solid rgba(255, 217, 176, 0.36);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.home-plan-title strong {
+  color: #fff4de;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.home-plan-price {
+  display: inline-block;
+  margin-left: 0.55rem;
+  color: #ffffff;
 }
 
 .buying-spotlight {
@@ -1440,6 +1468,21 @@ h1 {
   #homeownership-blueprint li {
     font-size: 0.95rem;
     line-height: 1.45;
+  }
+
+  .home-plan-title {
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .home-plan-title strong {
+    font-size: 1rem;
+  }
+
+  .home-plan-price {
+    display: block;
+    margin: 0.28rem 0 0;
   }
 
   .coaching-page main.section.container > p:first-of-type,
