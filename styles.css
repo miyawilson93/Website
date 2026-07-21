@@ -342,16 +342,18 @@ img {
 }
 
 .mobile-home-brand {
-  color: #ffffff;
+  color: var(--primary-dark);
   text-decoration: none;
   font-family: "Times New Roman", Georgia, serif;
-  font-size: 0.98rem;
+  font-size: 1.2rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
-  background: var(--topbar-bg);
-  border-radius: 999px;
-  padding: 0.55rem 0.9rem;
+  letter-spacing: 0;
+  background: transparent;
+  border-radius: 0;
+  padding: 0.2rem 0.1rem;
   line-height: 1;
+  flex: 0 1 auto;
+  min-width: 0;
 }
 
 .mobile-home-icon {
@@ -1326,6 +1328,10 @@ h1 {
     transform: scale(1.02);
   }
 
+  .buying-top-banner-image {
+    max-height: 260px;
+  }
+
   .buying-intro-layout {
     grid-template-columns: 1fr;
   }
@@ -1335,7 +1341,7 @@ h1 {
   }
 
   .buying-feature-photo {
-    min-height: 320px;
+    min-height: 220px;
   }
 
   .about-story-row,
@@ -1390,6 +1396,10 @@ h1 {
 }
 
 @media (max-width: 900px) {
+  .page-background-video {
+    display: none;
+  }
+
   .home-page::before,
   .coaching-page::before,
   .buying-selling-page::before,
@@ -1400,10 +1410,33 @@ h1 {
   }
 
   .buying-selling-page::before {
-    background-size: cover;
-    background-position: center;
+    background-image: linear-gradient(rgba(9, 7, 7, 0.72), rgba(14, 10, 9, 0.8)), url("Image (45).jpg");
+    background-size: cover, cover;
+    background-position: center, center;
     filter: none;
     transform: scale(1);
+  }
+
+  .mobile-home-nav-bar {
+    gap: 0.45rem;
+    width: min(92vw, 460px);
+    padding: 0.32rem 0.42rem;
+  }
+
+  .mobile-home-brand {
+    font-size: 1.06rem;
+  }
+
+  .mobile-home-hint {
+    display: none;
+  }
+
+  .buying-top-banner-image {
+    max-height: 210px;
+  }
+
+  .buying-feature-photo {
+    min-height: 180px;
   }
 
   .coaching-page main.section.container > p:first-of-type,
