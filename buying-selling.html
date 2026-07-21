@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css?v=62" />
   </head>
   <body class="home buying-selling-page">
-    <video class="page-background-video" autoplay muted loop playsinline webkit-playsinline preload="auto" aria-hidden="true">
+    <video class="page-background-video" autoplay muted defaultMuted loop playsinline webkit-playsinline preload="auto" disablepictureinpicture aria-hidden="true">
       <source src="MicrosoftTeams-video.mp4" type="video/mp4" />
     </video>
     <div class="mobile-home-nav" aria-label="Mobile site navigation">
@@ -236,6 +236,28 @@
           or legal matters should be reviewed with a licensed professional.</p>
       </div>
     </footer>
+    <script>
+      (function () {
+        var video = document.querySelector('.page-background-video');
+        if (!video) return;
+        video.muted = true;
+        video.defaultMuted = true;
+
+        var tryPlay = function () {
+          var playAttempt = video.play();
+          if (playAttempt && typeof playAttempt.catch === 'function') {
+            playAttempt.catch(function () {});
+          }
+        };
+
+        video.addEventListener('loadeddata', tryPlay, { once: true });
+        document.addEventListener('visibilitychange', function () {
+          if (!document.hidden) tryPlay();
+        });
+        document.addEventListener('touchstart', tryPlay, { once: true, passive: true });
+        tryPlay();
+      })();
+    </script>
     <script src="cart.js?v=2" defer></script>
     <script src="mobile-menu.js?v=5" defer></script>
   </body>
