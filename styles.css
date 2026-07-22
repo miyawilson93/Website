@@ -156,6 +156,11 @@ img {
   gap: 0.5rem;
 }
 
+.topbar .contact-phone,
+.mobile-home-topbar .contact-phone {
+  display: none;
+}
+
 .topbar .contact-phone svg {
   display: inline-block;
   vertical-align: middle;
@@ -311,7 +316,7 @@ img {
 
 .mobile-home-topbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: 0.5rem;
   background: var(--topbar-bg);
@@ -355,6 +360,8 @@ img {
   font-size: 0.98rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+  white-space: nowrap;
+  flex-shrink: 0;
   background: var(--topbar-bg);
   border-radius: 999px;
   padding: 0.55rem 0.9rem;
