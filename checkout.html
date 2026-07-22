@@ -98,14 +98,13 @@
       </section>
 
       <section class="coaching-card">
-        <h2>Payment Methods</h2>
-        <p>Please send your payment using one of the preferred methods below:</p>
-        <ul class="coaching-list">
-          <li>Zelle</li>
-          <li>Apple Pay</li>
-          <li>Cash App</li>
-        </ul>
-        <p>After payment, email your confirmation to Miya.Wilson@outlook.com with your selected items.</p>
+        <h2>Secure Payment</h2>
+        <p>Continue to Stripe Checkout to complete your order with card and other supported payment methods.</p>
+        <div style="display:flex; gap:0.6rem; flex-wrap:wrap; margin-top:0.75rem;">
+          <button class="cart-btn" type="button" data-checkout-button>Continue to Stripe Checkout</button>
+          <button class="cart-btn" type="button" data-checkout-clear>Clear Cart</button>
+        </div>
+        <p data-checkout-status style="margin-top:0.75rem;"></p>
       </section>
     </main>
 
@@ -121,7 +120,7 @@
     </footer>
 
     <script src="cart.js?v=2" defer></script>
-    <script src="checkout.js?v=1" defer></script>
+    <script src="checkout.js?v=2" defer></script>
     <script src="mobile-menu.js?v=5" defer></script>
   </body>
 </html>
