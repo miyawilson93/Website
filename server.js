@@ -7,6 +7,20 @@ const app = express();
 const PORT = Number(process.env.PORT || 4242);
 const ALLOW_LIVE_MODE = process.env.STRIPE_ALLOW_LIVE_MODE === "true";
 const STRIPE_MODE = (process.env.STRIPE_SECRET_KEY || "").startsWith("sk_live_") ? "live" : "test";
+const FRONTEND_BASE_URL = (process.env.FRONTEND_BASE_URL || "").trim();
+
+function normalizeOrigin(url) {
+  return String(url || "").trim().replace(/\/$/, "");
+}
+
+const ALLOWED_ORIGINS = Array.from(
+  new Set(
+    [FRONTEND_BASE_URL]
+      .concat((process.env.ALLOWED_ORIGINS || "").split(","))
+      .map(normalizeOrigin)
+      .filter(Boolean)
+  )
+);
 
 if (!process.env.STRIPE_SECRET_KEY) {
   console.warn("[stripe] STRIPE_SECRET_KEY is not set. Stripe endpoints will fail until it is provided.");
@@ -84,6 +98,52 @@ function getBaseUrl(req) {
   return process.env.PUBLIC_BASE_URL || `http://localhost:${PORT}`;
 }
 
+function getFrontendBaseUrl(req) {
+  const requestOrigin = normalizeOrigin(req.headers.origin);
+  if (FRONTEND_BASE_URL) {
+    return normalizeOrigin(FRONTEND_BASE_URL);
+  }
+  if (requestOrigin) {
+    return requestOrigin;
+  }
+  return getBaseUrl(req);
+}
+
+function isAllowedOrigin(origin) {
+  const normalized = normalizeOrigin(origin);
+  if (!normalized) {
+    return true;
+  }
+  if (ALLOWED_ORIGINS.length === 0) {
+    return true;
+  }
+  return ALLOWED_ORIGINS.includes(normalized);
+}
+
+function applyCors(req, res, next) {
+  const origin = normalizeOrigin(req.headers.origin);
+  if (origin && isAllowedOrigin(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+    res.setHeader("Vary", "Origin");
+    res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type,Stripe-Signature");
+  }
+
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204);
+  }
+
+  return next();
+}
+
+function requireAllowedOrigin(req, res, next) {
+  const origin = normalizeOrigin(req.headers.origin);
+  if (origin && !isAllowedOrigin(origin)) {
+    return res.status(403).json({ error: "Origin not allowed." });
+  }
+  return next();
+}
+
 async function resolveMappedLineItem(mappedId, item) {
   if (!mappedId) {
     return null;
@@ -138,6 +198,7 @@ app.post("/api/webhooks/stripe", express.raw({ type: "application/json" }), (req
   return res.json({ received: true });
 });
 
+app.use(applyCors);
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
@@ -148,10 +209,12 @@ app.get("/api/stripe-health", (_req, res) => {
     hasWebhookSecret: Boolean(process.env.STRIPE_WEBHOOK_SECRET),
     stripeMode: STRIPE_MODE,
     allowLiveMode: ALLOW_LIVE_MODE,
+    frontendBaseUrl: FRONTEND_BASE_URL || null,
+    allowedOrigins: ALLOWED_ORIGINS,
   });
 });
 
-app.post("/api/create-checkout-session", async (req, res) => {
+app.post("/api/create-checkout-session", requireAllowedOrigin, async (req, res) => {
   try {
     if (!process.env.STRIPE_SECRET_KEY) {
       return res.status(500).json({ error: "Missing STRIPE_SECRET_KEY on server." });
@@ -187,13 +250,13 @@ app.post("/api/create-checkout-session", async (req, res) => {
       })
     );
 
-    const baseUrl = getBaseUrl(req);
+    const frontendUrl = getFrontendBaseUrl(req);
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items: lineItems,
-      success_url: `${baseUrl}/checkout.html?status=success&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}/checkout.html?status=cancelled`,
+      success_url: `${frontendUrl}/checkout.html?status=success&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${frontendUrl}/checkout.html?status=cancelled`,
       automatic_tax: { enabled: true },
       customer_creation: "always",
       billing_address_collection: "auto",

@@ -2,6 +2,22 @@
   var CART_KEY = "movewise_cart";
   var statusMessage = "";
 
+  function getApiBaseUrl() {
+    var meta = document.querySelector('meta[name="movewise-api-base-url"]');
+    var configured = meta && meta.getAttribute("content") ? meta.getAttribute("content").trim() : "";
+    var globalValue = typeof window !== "undefined" && window.MOVEWISE_API_BASE_URL ? String(window.MOVEWISE_API_BASE_URL).trim() : "";
+    var rawBase = globalValue || configured;
+    return rawBase ? rawBase.replace(/\/$/, "") : "";
+  }
+
+  function apiUrl(path) {
+    var base = getApiBaseUrl();
+    if (!base) {
+      return path;
+    }
+    return base + path;
+  }
+
   function readCart() {
     try {
       var parsed = JSON.parse(localStorage.getItem(CART_KEY) || "[]");
@@ -98,7 +114,7 @@
     renderCheckout();
 
     try {
-      var response = await fetch("/api/create-checkout-session", {
+      var response = await fetch(apiUrl("/api/create-checkout-session"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -117,7 +133,11 @@
 
       window.location.href = payload.url;
     } catch (err) {
-      statusMessage = "Checkout error: " + (err && err.message ? err.message : "Please try again.");
+      var hint = "";
+      if (getApiBaseUrl() === "") {
+        hint = " If your site is static-hosted, set the API base URL in checkout.html.";
+      }
+      statusMessage = "Checkout error: " + (err && err.message ? err.message : "Please try again.") + hint;
       if (button) {
         button.disabled = false;
         button.textContent = "Continue to Stripe Checkout";
