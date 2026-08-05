@@ -1,6 +1,11 @@
 (function () {
   var CART_KEY = "movewise_cart";
   var statusMessage = "";
+  var downloadState = {
+    loading: false,
+    message: "",
+    links: [],
+  };
 
   function getApiBaseUrl() {
     var meta = document.querySelector('meta[name="movewise-api-base-url"]');
@@ -63,6 +68,8 @@
       statusEl.textContent = statusMessage;
     }
 
+    renderDigitalDelivery();
+
     if (groupedItems.length === 0) {
       list.innerHTML = "<li>Your cart is empty. Add items from Agent Coaching or Agent Resources.</li>";
       totalEl.textContent = "0.00";
@@ -85,14 +92,76 @@
     totalEl.textContent = total.toFixed(2);
   }
 
-  function updateStatusFromQuery() {
+  function renderDigitalDelivery() {
+    var card = document.querySelector("[data-delivery-card]");
+    var messageEl = document.querySelector("[data-delivery-message]");
+    var list = document.querySelector("[data-delivery-list]");
+    if (!card || !messageEl || !list) {
+      return;
+    }
+
+    if (!downloadState.loading && downloadState.links.length === 0 && !downloadState.message) {
+      card.hidden = true;
+      return;
+    }
+
+    card.hidden = false;
+    messageEl.textContent = downloadState.message;
+    list.innerHTML = "";
+
+    downloadState.links.forEach(function (item) {
+      var li = document.createElement("li");
+      li.className = "checkout-item";
+      var label = item && item.label ? item.label : "Download";
+      var url = item && item.url ? item.url : "#";
+      li.innerHTML = "<span>" + label + "</span><a class=\"resource-link\" href=\"" + url + "\" target=\"_blank\" rel=\"noopener noreferrer\">Download</a>";
+      list.appendChild(li);
+    });
+  }
+
+  async function updateStatusFromQuery() {
     var params = new URLSearchParams(window.location.search);
     var status = params.get("status");
+    var sessionId = params.get("session_id");
     if (status === "success") {
       writeCart([]);
       statusMessage = "Payment complete. Thank you. A receipt will be sent by Stripe.";
+      if (sessionId) {
+        await fetchDigitalDelivery(sessionId);
+      }
     } else if (status === "cancelled") {
       statusMessage = "Checkout cancelled. Your cart is still saved.";
+    }
+  }
+
+  async function fetchDigitalDelivery(sessionId) {
+    downloadState.loading = true;
+    downloadState.message = "Checking your digital delivery...";
+    downloadState.links = [];
+    renderDigitalDelivery();
+
+    try {
+      var response = await fetch(apiUrl("/api/digital-delivery?session_id=" + encodeURIComponent(sessionId)), {
+        method: "GET",
+      });
+      var payload = await response.json();
+      if (!response.ok) {
+        throw new Error(payload.error || "Unable to load digital delivery.");
+      }
+
+      var links = Array.isArray(payload.downloads) ? payload.downloads : [];
+      downloadState.links = links;
+      if (links.length > 0) {
+        downloadState.message = "Your purchase includes the digital downloads below.";
+      } else {
+        downloadState.message = "No digital downloads were attached to this purchase.";
+      }
+    } catch (err) {
+      downloadState.message = "Digital delivery error: " + (err && err.message ? err.message : "Please contact support.");
+      downloadState.links = [];
+    } finally {
+      downloadState.loading = false;
+      renderDigitalDelivery();
     }
   }
 
@@ -163,8 +232,8 @@
     }
   }
 
-  function init() {
-    updateStatusFromQuery();
+  async function init() {
+    await updateStatusFromQuery();
     renderCheckout();
     bindActions();
   }

@@ -53,6 +53,13 @@ const PRODUCT_TO_PRICE_ID = {
   "Agent Merch": process.env.STRIPE_PRICE_AGENT_MERCH,
 };
 
+const DIGITAL_DELIVERY_BY_PRODUCT = {
+  "Buyer Consultation Guide": {
+    label: "Buyer Consultation Guide PDF",
+    path: "/buyer-consultation-guide-new-realtor.pdf",
+  },
+};
+
 function randomSuffix(len) {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   let out = "";
@@ -107,6 +114,12 @@ function getFrontendBaseUrl(req) {
     return requestOrigin;
   }
   return getBaseUrl(req);
+}
+
+function buildFrontendFileUrl(req, filePath) {
+  const base = getFrontendBaseUrl(req);
+  const normalizedPath = String(filePath || "").startsWith("/") ? filePath : `/${filePath}`;
+  return `${base}${normalizedPath}`;
 }
 
 function isAllowedOrigin(origin) {
@@ -212,6 +225,44 @@ app.get("/api/stripe-health", (_req, res) => {
     frontendBaseUrl: FRONTEND_BASE_URL || null,
     allowedOrigins: ALLOWED_ORIGINS,
   });
+});
+
+app.get("/api/digital-delivery", requireAllowedOrigin, async (req, res) => {
+  try {
+    const sessionId = typeof req.query.session_id === "string" ? req.query.session_id.trim() : "";
+    if (!sessionId) {
+      return res.status(400).json({ error: "Missing session_id." });
+    }
+
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
+    if (!session || session.payment_status !== "paid") {
+      return res.status(403).json({ error: "Payment is not completed for this session." });
+    }
+
+    const lineItems = await stripe.checkout.sessions.listLineItems(sessionId, { limit: 100 });
+    const names = lineItems.data
+      .map((item) => (typeof item.description === "string" ? item.description.trim() : ""))
+      .filter(Boolean);
+
+    const downloads = [];
+    names.forEach((name) => {
+      const item = DIGITAL_DELIVERY_BY_PRODUCT[name];
+      if (item) {
+        downloads.push({
+          productName: name,
+          label: item.label,
+          url: buildFrontendFileUrl(req, item.path),
+        });
+      }
+    });
+
+    return res.json({
+      sessionId,
+      downloads,
+    });
+  } catch (err) {
+    return res.status(500).json({ error: err.message || "Unable to fetch digital delivery." });
+  }
 });
 
 app.post("/api/create-checkout-session", requireAllowedOrigin, async (req, res) => {
