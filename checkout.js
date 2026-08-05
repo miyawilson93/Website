@@ -1,5 +1,6 @@
 (function () {
   var CART_KEY = "movewise_cart";
+  var PENDING_PURCHASE_KEY = "movewise_pending_purchase";
   var statusMessage = "";
   var downloadState = {
     loading: false,
@@ -34,6 +35,23 @@
 
   function writeCart(items) {
     localStorage.setItem(CART_KEY, JSON.stringify(items));
+  }
+
+  function readPendingPurchaseItems() {
+    try {
+      var parsed = JSON.parse(localStorage.getItem(PENDING_PURCHASE_KEY) || "[]");
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (_err) {
+      return [];
+    }
+  }
+
+  function writePendingPurchaseItems(items) {
+    localStorage.setItem(PENDING_PURCHASE_KEY, JSON.stringify(items || []));
+  }
+
+  function clearPendingPurchaseItems() {
+    localStorage.removeItem(PENDING_PURCHASE_KEY);
   }
 
   function aggregateItems(items) {
@@ -141,8 +159,16 @@
     renderDigitalDelivery();
 
     try {
-      var response = await fetch(apiUrl("/api/digital-delivery?session_id=" + encodeURIComponent(sessionId)), {
-        method: "GET",
+      var pendingItems = readPendingPurchaseItems();
+      var response = await fetch(apiUrl("/api/digital-delivery"), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          session_id: sessionId || "",
+          items: pendingItems,
+        }),
       });
       var payload = await response.json();
       if (!response.ok) {
@@ -152,6 +178,7 @@
       var links = Array.isArray(payload.downloads) ? payload.downloads : [];
       downloadState.links = links;
       if (links.length > 0) {
+        clearPendingPurchaseItems();
         downloadState.message = "Your purchase includes the digital downloads below.";
       } else {
         downloadState.message = "No digital downloads were attached to this purchase.";
@@ -180,6 +207,7 @@
     }
 
     statusMessage = "Creating your secure Stripe checkout session...";
+    writePendingPurchaseItems(items);
     renderCheckout();
 
     try {
