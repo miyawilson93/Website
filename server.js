@@ -58,6 +58,10 @@ const DIGITAL_DELIVERY_BY_PRODUCT = {
     label: "Buyer Consultation Guide PDF",
     path: "/buyer-consultation-guide-new-realtor.pdf",
   },
+  "Seller Consultation Guide": {
+    label: "Seller Consultation Guide PDF",
+    path: "/seller-consultation-guide-new-realtor.pdf",
+  },
 };
 
 function randomSuffix(len) {
