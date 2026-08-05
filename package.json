@@ -23,6 +23,8 @@
   "dependencies": {
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "pdf-lib": "^1.17.1",
+    "pdfkit": "^0.19.1",
     "stripe": "^22.3.2"
   }
 }
