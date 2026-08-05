@@ -66,6 +66,10 @@ const DIGITAL_DELIVERY_BY_PRODUCT = {
     label: "Seller Consultation Guide PDF",
     path: "/seller-consultation-guide-new-realtor.pdf",
   },
+  "Digital Social Media Content Calendar": {
+    label: "Digital Social Media Content Calendar PDF",
+    path: "/digital-social-media-content-calendar.pdf",
+  },
 };
 
 function randomSuffix(len) {

@@ -77,6 +77,13 @@
         url: "seller-consultation-guide-new-realtor.pdf",
       };
     }
+    if (name === "Digital Social Media Content Calendar") {
+      return {
+        productName: name,
+        label: "Digital Social Media Content Calendar PDF",
+        url: "digital-social-media-content-calendar.pdf",
+      };
+    }
     return null;
   }
 
