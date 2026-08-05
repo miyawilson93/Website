@@ -54,6 +54,10 @@ const PRODUCT_TO_PRICE_ID = {
 };
 
 const DIGITAL_DELIVERY_BY_PRODUCT = {
+  "New Agent Starter Kit": {
+    label: "New Agent Starter Kit PDF",
+    path: "/new-agent-starter-kit-top-producer.pdf",
+  },
   "Buyer Consultation Guide": {
     label: "Buyer Consultation Guide PDF",
     path: "/buyer-consultation-guide-new-realtor.pdf",
