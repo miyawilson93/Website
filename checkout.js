@@ -54,6 +54,48 @@
     localStorage.removeItem(PENDING_PURCHASE_KEY);
   }
 
+  function mapProductToDownload(itemName) {
+    var name = String(itemName || "").trim();
+    if (name === "New Agent Starter Kit") {
+      return {
+        productName: name,
+        label: "New Agent Starter Kit PDF",
+        url: "new-agent-starter-kit-top-producer.pdf",
+      };
+    }
+    if (name === "Buyer Consultation Guide") {
+      return {
+        productName: name,
+        label: "Buyer Consultation Guide PDF",
+        url: "buyer-consultation-guide-new-realtor.pdf",
+      };
+    }
+    if (name === "Seller Consultation Guide") {
+      return {
+        productName: name,
+        label: "Seller Consultation Guide PDF",
+        url: "seller-consultation-guide-new-realtor.pdf",
+      };
+    }
+    return null;
+  }
+
+  function createLocalDownloadLinks(items) {
+    var links = [];
+    if (!Array.isArray(items)) {
+      return links;
+    }
+
+    items.forEach(function (item) {
+      var link = mapProductToDownload(item && item.name ? item.name : "");
+      if (link) {
+        links.push(link);
+      }
+    });
+
+    return links;
+  }
+
   function aggregateItems(items) {
     var grouped = {};
 
@@ -184,8 +226,14 @@
         downloadState.message = "No digital downloads were attached to this purchase.";
       }
     } catch (err) {
-      downloadState.message = "Digital delivery error: " + (err && err.message ? err.message : "Please contact support.");
-      downloadState.links = [];
+      var fallbackLinks = createLocalDownloadLinks(readPendingPurchaseItems());
+      if (fallbackLinks.length > 0) {
+        downloadState.links = fallbackLinks;
+        downloadState.message = "Your purchase includes the digital downloads below.";
+      } else {
+        downloadState.message = "Digital delivery error: " + (err && err.message ? err.message : "Please contact support.");
+        downloadState.links = [];
+      }
     } finally {
       downloadState.loading = false;
       renderDigitalDelivery();
