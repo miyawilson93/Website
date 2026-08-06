@@ -54,48 +54,65 @@
     localStorage.removeItem(PENDING_PURCHASE_KEY);
   }
 
-  function mapProductToDownload(itemName) {
+  function buildProtectedDownloadUrl(sessionId, itemName) {
+    var normalizedSessionId = String(sessionId || "").trim();
+    var normalizedItemName = String(itemName || "").trim();
+    if (!normalizedSessionId || !normalizedItemName) {
+      return "";
+    }
+
+    return apiUrl("/api/digital-download")
+      + "?session_id=" + encodeURIComponent(normalizedSessionId)
+      + "&product=" + encodeURIComponent(normalizedItemName);
+  }
+
+  function mapProductToDownload(itemName, sessionId) {
     var name = String(itemName || "").trim();
     if (name === "New Agent Starter Kit") {
       return {
         productName: name,
         label: "New Agent Starter Kit PDF",
-        url: "new-agent-starter-kit-top-producer.pdf",
+        url: buildProtectedDownloadUrl(sessionId, name),
       };
     }
     if (name === "Buyer Consultation Guide") {
       return {
         productName: name,
         label: "Buyer Consultation Guide PDF",
-        url: "buyer-consultation-guide-new-realtor.pdf",
+        url: buildProtectedDownloadUrl(sessionId, name),
       };
     }
     if (name === "Seller Consultation Guide") {
       return {
         productName: name,
         label: "Seller Consultation Guide PDF",
-        url: "seller-consultation-guide-new-realtor.pdf",
+        url: buildProtectedDownloadUrl(sessionId, name),
       };
     }
     if (name === "Digital Social Media Content Calendar") {
       return {
         productName: name,
         label: "Digital Social Media Content Calendar PDF",
-        url: "digital-social-media-content-calendar.pdf",
+        url: buildProtectedDownloadUrl(sessionId, name),
       };
     }
     return null;
   }
 
-  function createLocalDownloadLinks(items) {
+  function createLocalDownloadLinks(items, sessionId) {
     var links = [];
+    var normalizedSessionId = String(sessionId || "").trim();
     if (!Array.isArray(items)) {
       return links;
     }
 
+    if (!normalizedSessionId) {
+      return links;
+    }
+
     items.forEach(function (item) {
-      var link = mapProductToDownload(item && item.name ? item.name : "");
-      if (link) {
+      var link = mapProductToDownload(item && item.name ? item.name : "", normalizedSessionId);
+      if (link && link.url) {
         links.push(link);
       }
     });
@@ -233,7 +250,7 @@
         downloadState.message = "No digital downloads were attached to this purchase.";
       }
     } catch (err) {
-      var fallbackLinks = createLocalDownloadLinks(readPendingPurchaseItems());
+      var fallbackLinks = createLocalDownloadLinks(readPendingPurchaseItems(), sessionId);
       if (fallbackLinks.length > 0) {
         downloadState.links = fallbackLinks;
         downloadState.message = "Your purchase includes the digital downloads below.";

@@ -72,6 +72,10 @@ const DIGITAL_DELIVERY_BY_PRODUCT = {
   },
 };
 
+const PROTECTED_DOWNLOAD_PATHS = new Set(
+  Object.values(DIGITAL_DELIVERY_BY_PRODUCT).map((item) => item.path)
+);
+
 function randomSuffix(len) {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
   let out = "";
@@ -134,6 +138,19 @@ function buildFrontendFileUrl(req, filePath) {
   return `${base}${normalizedPath}`;
 }
 
+function buildProtectedDownloadUrl(req, sessionId, productName) {
+  const base = getBaseUrl(req);
+  const params = new URLSearchParams({
+    session_id: String(sessionId || ""),
+    product: String(productName || ""),
+  });
+  return `${base}/api/digital-download?${params.toString()}`;
+}
+
+function getProtectedFileAbsolutePath(filePath) {
+  return path.join(__dirname, String(filePath || "").replace(/^\//, ""));
+}
+
 function isAllowedOrigin(origin) {
   const normalized = normalizeOrigin(origin);
   if (!normalized) {
@@ -167,6 +184,39 @@ function requireAllowedOrigin(req, res, next) {
     return res.status(403).json({ error: "Origin not allowed." });
   }
   return next();
+}
+
+function blockProtectedStaticDownloads(req, res, next) {
+  const requestPath = (() => {
+    try {
+      return decodeURIComponent(req.path || "");
+    } catch (_err) {
+      return req.path || "";
+    }
+  })();
+
+  if (PROTECTED_DOWNLOAD_PATHS.has(requestPath)) {
+    return res.status(404).send("Not found.");
+  }
+
+  return next();
+}
+
+async function getPaidSessionProductNames(sessionId) {
+  const normalizedSessionId = typeof sessionId === "string" ? sessionId.trim() : "";
+  if (!normalizedSessionId) {
+    throw new Error("Missing session_id.");
+  }
+
+  const session = await stripe.checkout.sessions.retrieve(normalizedSessionId);
+  if (!session || session.payment_status !== "paid") {
+    throw new Error("Payment is not completed for this session.");
+  }
+
+  const lineItems = await stripe.checkout.sessions.listLineItems(normalizedSessionId, { limit: 100 });
+  return lineItems.data
+    .map((item) => (typeof item.description === "string" ? item.description.trim() : ""))
+    .filter(Boolean);
 }
 
 async function resolveMappedLineItem(mappedId, item) {
@@ -225,6 +275,7 @@ app.post("/api/webhooks/stripe", express.raw({ type: "application/json" }), (req
 
 app.use(applyCors);
 app.use(express.json());
+app.use(blockProtectedStaticDownloads);
 app.use(express.static(path.join(__dirname)));
 
 app.get("/api/stripe-health", (_req, res) => {
@@ -255,16 +306,8 @@ async function handleDigitalDelivery(req, res) {
 
     if (sessionId) {
       try {
-        const session = await stripe.checkout.sessions.retrieve(sessionId);
-        if (!session || session.payment_status !== "paid") {
-          throw new Error("Payment is not completed for this session.");
-        }
-
         usedStripe = true;
-        const lineItems = await stripe.checkout.sessions.listLineItems(sessionId, { limit: 100 });
-        names = lineItems.data
-          .map((item) => (typeof item.description === "string" ? item.description.trim() : ""))
-          .filter(Boolean);
+        names = await getPaidSessionProductNames(sessionId);
       } catch (err) {
         if (fallbackNames.length === 0) {
           return res.status(500).json({ error: err.message || "Unable to fetch digital delivery." });
@@ -280,11 +323,11 @@ async function handleDigitalDelivery(req, res) {
     const downloads = [];
     names.forEach((name) => {
       const item = DIGITAL_DELIVERY_BY_PRODUCT[name];
-      if (item) {
+      if (item && sessionId) {
         downloads.push({
           productName: name,
           label: item.label,
-          url: buildFrontendFileUrl(req, item.path),
+          url: buildProtectedDownloadUrl(req, sessionId, name),
         });
       }
     });
@@ -306,6 +349,32 @@ app.get("/api/digital-delivery", requireAllowedOrigin, async (req, res) => {
 
 app.post("/api/digital-delivery", requireAllowedOrigin, async (req, res) => {
   return handleDigitalDelivery(req, res);
+});
+
+app.get("/api/digital-download", async (req, res) => {
+  try {
+    const sessionId = typeof req.query.session_id === "string" ? req.query.session_id.trim() : "";
+    const productName = typeof req.query.product === "string" ? req.query.product.trim() : "";
+
+    if (!sessionId || !productName) {
+      return res.status(400).json({ error: "Missing session_id or product." });
+    }
+
+    const download = DIGITAL_DELIVERY_BY_PRODUCT[productName];
+    if (!download) {
+      return res.status(404).json({ error: "Download not found." });
+    }
+
+    const purchasedProductNames = await getPaidSessionProductNames(sessionId);
+    if (!purchasedProductNames.includes(productName)) {
+      return res.status(403).json({ error: "This paid session does not include that download." });
+    }
+
+    const absolutePath = getProtectedFileAbsolutePath(download.path);
+    return res.download(absolutePath, path.basename(download.path));
+  } catch (err) {
+    return res.status(500).json({ error: err.message || "Unable to serve digital download." });
+  }
 });
 
 app.post("/api/create-checkout-session", requireAllowedOrigin, async (req, res) => {
