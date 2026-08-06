@@ -1275,6 +1275,46 @@ h1 {
   box-shadow: 0 0 0 4px rgba(117, 43, 29, 0.08);
 }
 
+.preview-cover-section {
+  margin-top: 1rem;
+  padding: 1.1rem 1.1rem 1rem;
+  border-radius: 24px;
+  border: 1px solid rgba(117, 43, 29, 0.16);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 244, 224, 0.95));
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.1);
+}
+
+.preview-cover-copy h3 {
+  margin: 0 0 0.4rem;
+  color: var(--topbar-bg);
+}
+
+.preview-cover-copy p {
+  margin: 0;
+  color: #2f221d;
+  line-height: 1.55;
+}
+
+.preview-cover-figure {
+  margin: 1rem 0 0;
+  padding: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 18px;
+  border: 1px solid rgba(117, 43, 29, 0.12);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.preview-cover-image {
+  display: block;
+  width: min(100%, 760px);
+  max-height: 560px;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.16);
+}
+
 .preview-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2444,6 +2484,19 @@ h1 {
   .preview-list li {
     font-size: 0.95rem;
     line-height: 1.45;
+  }
+
+  .preview-cover-section {
+    padding: 1rem 0.95rem;
+  }
+
+  .preview-cover-figure {
+    margin-top: 0.8rem;
+  }
+
+  .preview-cover-image {
+    width: min(100%, 100%);
+    max-height: 320px;
   }
 
   .preview-grid,

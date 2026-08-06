@@ -1,0 +1,20 @@
+<svg width="900" height="1200" viewBox="0 0 900 1200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Digital Social Media Content Calendar cover preview">
+  <rect width="900" height="1200" rx="48" fill="#f7efe6"/>
+  <rect x="60" y="70" width="780" height="1060" rx="36" fill="#ffffff" stroke="#d7b28b" stroke-width="8"/>
+  <rect x="110" y="130" width="680" height="120" rx="24" fill="#752b1d"/>
+  <text x="450" y="200" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="700" fill="#ffffff">Digital Planner</text>
+  <text x="450" y="248" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#f8e8d2">Social Media Content Calendar</text>
+  <rect x="120" y="300" width="300" height="220" rx="24" fill="#f7efe6" stroke="#e3c9a0" stroke-width="4"/>
+  <rect x="460" y="300" width="320" height="220" rx="24" fill="#fdf7ef" stroke="#e3c9a0" stroke-width="4"/>
+  <text x="270" y="388" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#5b2f1d">Monthly Themes</text>
+  <text x="620" y="388" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#5b2f1d">Content Pillars</text>
+  <rect x="120" y="560" width="660" height="420" rx="28" fill="#fffaf4" stroke="#e3c9a0" stroke-width="4"/>
+  <rect x="150" y="600" width="600" height="24" rx="12" fill="#752b1d"/>
+  <rect x="150" y="650" width="480" height="18" rx="9" fill="#e9c89a"/>
+  <rect x="150" y="690" width="520" height="18" rx="9" fill="#f0d4a7"/>
+  <rect x="150" y="730" width="420" height="18" rx="9" fill="#f0d4a7"/>
+  <rect x="150" y="780" width="560" height="18" rx="9" fill="#e9c89a"/>
+  <rect x="150" y="830" width="460" height="18" rx="9" fill="#f0d4a7"/>
+  <circle cx="710" cy="780" r="54" fill="#752b1d"/>
+  <text x="710" y="792" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#ffffff">01</text>
+</svg>
