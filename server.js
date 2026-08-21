@@ -420,6 +420,7 @@ app.post("/api/create-checkout-session", requireAllowedOrigin, async (req, res) 
       line_items: lineItems,
       success_url: `${frontendUrl}/checkout.html?status=success&session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${frontendUrl}/checkout.html?status=cancelled`,
+      allow_promotion_codes: true,
       automatic_tax: { enabled: true },
       customer_creation: "always",
       billing_address_collection: "auto",
