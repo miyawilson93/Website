@@ -13,12 +13,90 @@
 * {
   box-sizing: border-box;
 }
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+.home-page,
+.coaching-page,
+.buying-selling-page,
+.resources-page,
+.about-page,
+.faq-page {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+}
+
+.home-page { --page-background-image: url("Screenshot 2026-05-06 094613.png"); }
+.coaching-page { --page-background-image: url("Screenshot 2026-05-06 094739.png"); }
+.buying-selling-page { --page-background-image: url("Image (36).jpg"); }
+.resources-page { --page-background-image: url("Screenshot 2026-05-06 095430.png"); }
+.about-page { --page-background-image: url("Image (38).jpg"); }
+.faq-page { --page-background-image: url("Screenshot 2026-05-06 095358.png"); }
+
+.home-page::before,
+.coaching-page::before,
+.buying-selling-page::before,
+.resources-page::before,
+.about-page::before,
+.faq-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image: var(--page-background-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(2px);
+  transform: scale(1.03);
+}
+
+.buying-selling-page::before {
+  background-image: linear-gradient(rgba(9, 7, 7, 0.66), rgba(14, 10, 9, 0.78));
+  filter: none;
+  transform: none;
+}
+
+.home-page .hero,
+.home-page .footer,
+.coaching-page .hero,
+.coaching-page .footer,
+.buying-selling-page .hero,
+.buying-selling-page .footer,
+.resources-page .hero,
 .resources-page .footer,
 .about-page .hero,
 .about-page .footer,
 .faq-page .hero,
 .faq-page .footer {
   background: transparent;
+}
+
+.resources-page .footer,
+.about-page .hero,
+.about-page .footer,
+.faq-page .hero,
+.faq-page .footer {
+  background: transparent;
+}
+
+.page-background-video {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: blur(6px);
+  transform: scale(1.08);
+  pointer-events: none;
 }
 
 img {
