@@ -79,6 +79,10 @@ body {
   background: transparent;
 }
 
+.about-page .page-background-video {
+  display: none;
+}
+
 .resources-page .footer,
 .about-page .hero,
 .about-page .footer,
@@ -2385,6 +2389,16 @@ h1 {
 }
 
 @media (max-width: 700px) {
+  .about-page::before {
+    display: none;
+  }
+
+  .about-page .page-background-video {
+    display: block;
+    filter: blur(3px);
+    transform: scale(1.08);
+  }
+
   .preview-page main.section.container {
     padding: 0 0.85rem 2.35rem;
   }
