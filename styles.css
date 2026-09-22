@@ -299,6 +299,10 @@ img {
   display: none;
 }
 
+.house-intro {
+  display: none;
+}
+
 .mobile-home-topbar {
   display: flex;
   justify-content: flex-end;
@@ -2125,6 +2129,92 @@ h1 {
     left: 0;
     width: 100%;
     z-index: 1200;
+  }
+
+  .home-page .house-intro {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.1rem;
+    overflow: hidden;
+    background: linear-gradient(180deg, #bfe3ff 0%, #eaf6ff 55%, #fdf3e2 100%);
+    cursor: pointer;
+  }
+
+  .home-page .house-intro.is-hidden {
+    display: none;
+  }
+
+  .house-intro__sky {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 100%, rgba(255, 214, 153, 0.55), transparent 60%);
+  }
+
+  .house-intro__scene {
+    position: relative;
+    width: min(72vw, 260px);
+    transition: transform 0.9s cubic-bezier(0.6, 0, 0.4, 1), opacity 0.9s ease;
+  }
+
+  .house-intro__logo {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.2));
+  }
+
+  .house-intro__door-glow {
+    position: absolute;
+    left: 50%;
+    bottom: 14%;
+    width: 22%;
+    height: 16%;
+    transform: translateX(-50%) scaleY(0.04);
+    transform-origin: bottom center;
+    background: radial-gradient(circle, rgba(255, 244, 214, 0.95), rgba(255, 214, 153, 0));
+    border-radius: 6px;
+    opacity: 0;
+    transition: transform 0.85s cubic-bezier(0.6, 0, 0.4, 1), opacity 0.5s ease;
+  }
+
+  .house-intro__prompt {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #7a2f1f;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    transition: opacity 0.4s ease;
+  }
+
+  .house-intro.is-opening .house-intro__door-glow {
+    transform: translateX(-50%) scaleY(1);
+    opacity: 1;
+  }
+
+  .house-intro.is-opening .house-intro__prompt {
+    opacity: 0;
+  }
+
+  .house-intro.is-entering .house-intro__scene {
+    transform: scale(6) translateY(-6%);
+    opacity: 0;
+  }
+
+  .house-intro.is-entering .house-intro__sky {
+    opacity: 0;
+    transition: opacity 0.6s ease 0.3s;
+  }
+
+  .house-intro.is-entering {
+    background: #fff;
+    transition: background 0.7s ease 0.3s;
   }
 
   .topbar,
