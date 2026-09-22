@@ -79,10 +79,6 @@ body {
   background: transparent;
 }
 
-.about-page .page-background-video {
-  display: none;
-}
-
 .resources-page .footer,
 .about-page .hero,
 .about-page .footer,
@@ -91,7 +87,7 @@ body {
   background: transparent;
 }
 
-.page-background-video {
+.home-page .page-background-video {
   position: fixed;
   inset: 0;
   width: 100%;
@@ -101,6 +97,7 @@ body {
   filter: blur(6px);
   transform: scale(1.08);
   pointer-events: none;
+  display: none;
 }
 
 img {
@@ -2389,11 +2386,11 @@ h1 {
 }
 
 @media (max-width: 700px) {
-  .about-page::before {
+  .home-page::before {
     display: none;
   }
 
-  .about-page .page-background-video {
+  .home-page .page-background-video {
     display: block;
     filter: blur(3px);
     transform: scale(1.08);
