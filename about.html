@@ -297,6 +297,16 @@
         });
       })();
     </script>
+    <script>
+      (function () {
+        var bgVideo = document.querySelector('.page-background-video');
+        if (bgVideo) {
+          bgVideo.playbackRate = 0.75;
+          bgVideo.muted = true;
+          bgVideo.play();
+        }
+      })();
+    </script>
     <script src="cart.js?v=2" defer></script>
     <script src="mobile-menu.js?v=5" defer></script>
   </body>
