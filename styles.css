@@ -87,7 +87,8 @@ body {
   background: transparent;
 }
 
-.home-page .page-background-video {
+.home-page .page-background-video,
+.buying-selling-page .page-background-video {
   position: fixed;
   inset: 0;
   width: 100%;
@@ -98,6 +99,10 @@ body {
   transform: scale(1.08);
   pointer-events: none;
   display: none;
+}
+
+.buying-selling-page .page-background-video {
+  display: block;
 }
 
 @media (max-width: 900px) {
