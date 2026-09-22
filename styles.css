@@ -87,10 +87,6 @@ body {
   background: transparent;
 }
 
-.home-page::before {
-  display: none;
-}
-
 .home-page .page-background-video {
   position: fixed;
   inset: 0;
@@ -101,7 +97,17 @@ body {
   filter: blur(6px);
   transform: scale(1.08);
   pointer-events: none;
-  display: block;
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .home-page::before {
+    display: none;
+  }
+
+  .home-page .page-background-video {
+    display: block;
+  }
 }
 
 img {
